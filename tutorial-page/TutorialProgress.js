@@ -1,7 +1,7 @@
 let plushie = 'octopus';
 console.log('setting progress for ' + plushie);
 
-localStorage.setItem(plushie + '-progress', null);
+localStorage.removeItem(plushie + '-progress');
 
 //global progress dictionary. Will be filled with process
 var ProgressDictionary;
@@ -45,7 +45,7 @@ function AddColorEvent() {
 function FillProgressDictionary() {
   var progressItem = localStorage.getItem(plushie + '-progress');
   //progress exists
-  if (progressItem != null && progressItem != 'undefined') {
+  if (progressItem) {
     console.log(
       'This is a revisit! Coloring the appropriate headers: ' + progressItem
     );
