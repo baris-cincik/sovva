@@ -7,13 +7,12 @@ var ProgressDictionary;
 //perform initial processing(will fill dictionary too)
 FillProgressDictionary();
 
-if (!ProgressDictionary) {
+if (ProgressDictionary) {
+  //add coloring event to all accordions
+  AddColorEvent();
+} else {
   console.log('Failed to fetch tutorial progress');
-  return;
 }
-
-//add coloring event to all accordions
-AddColorEvent();
 
 function AddColorEvent() {
   var accordionElements = document.querySelectorAll('#accordion-element');
