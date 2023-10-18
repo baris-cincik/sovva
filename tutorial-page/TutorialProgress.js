@@ -1,5 +1,5 @@
 let plushie = 'octopus';
-console.log('setting progress for ' + plushie);
+log('setting progress for ' + plushie);
 
 localStorage.removeItem(plushie + '-progress');
 
@@ -14,19 +14,19 @@ window.onload = function () {
     //add coloring event to all accordions
     AddColorEvent();
   } else {
-    console.log('Failed to fetch tutorial progress');
+    log('Failed to fetch tutorial progress');
   }
 };
 
 function AddColorEvent() {
-  var accordionElements = document.querySelectorAll('#accordion-element');
+  var accordionElements = document.querySelectorAll('#accordion-row');
 
   accordionElements.forEach(function (element) {
     var videoElement = element.querySelector('video');
     if (videoElement) {
       videoElement.addEventListener('play', function () {
         // Add your desired functionality here
-        console.log('A video is played!');
+        log('A video is played!');
         //call colorHeader with the innerText
         //update global dictionary
       });
@@ -35,7 +35,7 @@ function AddColorEvent() {
       var buttonElement = element.querySelector('#accordion-header');
       if (buttonElement) {
         buttonElement.addEventListener('click', function () {
-          console.log('An accordion without a video is clicked!');
+          log('An accordion without a video is clicked!');
           //call colorHeader with the innerText
           //update global dictionary
         });
@@ -48,16 +48,14 @@ function FillProgressDictionary() {
   var progressItem = localStorage.getItem(plushie + '-progress');
   //progress exists
   if (progressItem) {
-    console.log(
-      'This is a revisit! Coloring the appropriate headers: ' + progressItem
-    );
+    log('This is a revisit! Coloring the appropriate headers: ' + progressItem);
     var progressDict = JSON.parse(progressItem);
     if (!progressDict) {
       return;
     }
 
     for (var key in progressDict) {
-      console.log('Deciding if we should color Key:', key, 'Value:', value);
+      log('Deciding if we should color Key:', key, 'Value:', value);
       // set progress for this key value pair
       var value = progressDict[key];
       if (value == true) {
@@ -67,7 +65,7 @@ function FillProgressDictionary() {
   }
   //first time
   else {
-    console.log('This is their first time. Initiating empty dictionary ...');
+    log('This is their first time. Initiating empty dictionary ...');
     let beginnerDict = getBeginnerDictionary();
     var dictionaryString = JSON.stringify(beginnerDict);
     localStorage.setItem(plushie + '-progress', dictionaryString);
@@ -79,7 +77,7 @@ function FillProgressDictionary() {
 function colorHeader(innerText) {
   var spanElement = document.querySelector('span');
   if (spanElement && spanElement.innerText === innerText) {
-    console.log('Span found. Coloring now ..');
+    log('Span found. Coloring now ..');
     var accordionHeader = spanElement.closest('#accordion-header');
 
     if (accordionHeader) {
@@ -102,13 +100,20 @@ function getBeginnerDictionary() {
     if (spanElement) {
       var spanText = spanElement.innerText;
       dictionary[spanText] = false;
-      console.log('Added to dictionary: ' + spanText);
+      log('Added to dictionary: ' + spanText);
     }
   });
   if (Object.keys(dictionary).length !== 0) {
-    console.log('The beginner dictionary is initiated.');
+    log('The beginner dictionary is initialized.');
     return dictionary;
   } else {
-    console.log('The beginner dictionary FAILED to initiate.');
+    log('The beginner dictionary FAILED to initialized.');
+  }
+}
+
+const IS_DEBUG = true;
+function log(toPrint) {
+  if (IS_DEBUG) {
+    log(toPrint);
   }
 }
