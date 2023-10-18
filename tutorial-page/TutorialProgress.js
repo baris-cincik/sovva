@@ -100,6 +100,7 @@ function getBeginnerDictionary() {
     if (spanElement) {
       var spanText = spanElement.innerText;
       dictionary[spanText] = false;
+      console.log('Added to dictionary: ' + spanText);
     }
   });
   if (Object.keys(dictionary).length !== 0) {
