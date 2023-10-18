@@ -6,15 +6,17 @@ localStorage.removeItem(plushie + '-progress');
 //global progress dictionary. Will be filled with process
 var ProgressDictionary;
 
-//perform initial processing(will fill dictionary too)
-FillProgressDictionary();
+window.onload = function () {
+  //perform initial processing(will fill dictionary too)
+  FillProgressDictionary();
 
-if (ProgressDictionary) {
-  //add coloring event to all accordions
-  AddColorEvent();
-} else {
-  console.log('Failed to fetch tutorial progress');
-}
+  if (ProgressDictionary) {
+    //add coloring event to all accordions
+    AddColorEvent();
+  } else {
+    console.log('Failed to fetch tutorial progress');
+  }
+};
 
 function AddColorEvent() {
   var accordionElements = document.querySelectorAll('#accordion-element');
