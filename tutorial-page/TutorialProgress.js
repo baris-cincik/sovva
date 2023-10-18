@@ -1,3 +1,4 @@
+const IS_DEBUG = true;
 let plushie = 'octopus';
 log('setting progress for ' + plushie);
 
@@ -111,7 +112,6 @@ function getBeginnerDictionary() {
   }
 }
 
-const IS_DEBUG = true;
 function log(toPrint) {
   if (IS_DEBUG) {
     log(toPrint);
