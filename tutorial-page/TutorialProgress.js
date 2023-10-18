@@ -97,6 +97,7 @@ function colorHeader(innerText) {
 function getBeginnerDictionary() {
   var dictionary = {};
   var accordionHeaders = document.querySelectorAll('#accordion-header');
+  console.log('Headers found: ' + accordionHeaders.length);
   accordionHeaders.forEach(function (element) {
     var spanElement = element.querySelector('span');
     if (spanElement) {
