@@ -44,7 +44,7 @@ function FillProgressDictionary() {
   var progressItem = localStorage.getItem(plushie + '-progress');
   //progress exists
   if (progressItem) {
-    console.log('This is revisit! Coloring the appropriate headers ..');
+    console.log('This is a revisit! Coloring the appropriate headers ..');
     var progressDict = JSON.parse(progressItem);
     if (!progressDict) {
       return;
@@ -98,4 +98,7 @@ function getBeginnerDictionary() {
       dictionary[spanText] = false;
     }
   });
+  if (Object.keys(dictionary).length !== 0) {
+    console.log('The beginner dictionary is initiated.');
+  }
 }
