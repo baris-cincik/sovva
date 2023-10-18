@@ -29,7 +29,7 @@ function AddColorEvent() {
         //update global dictionary
       });
     } else {
-      //no video element. add event to header button click
+      //no video element. Add event to header button click
       var buttonElement = element.querySelector('#accordion-header');
       if (buttonElement) {
         buttonElement.addEventListener('click', function () {
