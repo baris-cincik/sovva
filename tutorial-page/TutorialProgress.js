@@ -45,7 +45,7 @@ function AddColorEvent() {
 function FillProgressDictionary() {
   var progressItem = localStorage.getItem(plushie + '-progress');
   //progress exists
-  if (progressItem) {
+  if (progressItem != null && progressItem != 'undefined') {
     console.log('This is a revisit! Coloring the appropriate headers ..');
     var progressDict = JSON.parse(progressItem);
     if (!progressDict) {
