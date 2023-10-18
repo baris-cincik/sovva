@@ -97,7 +97,6 @@ function colorHeader(innerText) {
 function getBeginnerDictionary() {
   var dictionary = {};
   var accordionHeaders = document.querySelectorAll('#accordion-header');
-  console.log('Headers found: ' + accordionHeaders.length);
   accordionHeaders.forEach(function (element) {
     var spanElement = element.querySelector('span');
     if (spanElement) {
@@ -108,5 +107,8 @@ function getBeginnerDictionary() {
   });
   if (Object.keys(dictionary).length !== 0) {
     console.log('The beginner dictionary is initiated.');
+    return dictionary;
+  } else {
+    console.log('The beginner dictionary FAILED to initiate.');
   }
 }
