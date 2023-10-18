@@ -46,7 +46,9 @@ function FillProgressDictionary() {
   var progressItem = localStorage.getItem(plushie + '-progress');
   //progress exists
   if (progressItem != null && progressItem != 'undefined') {
-    console.log('This is a revisit! Coloring the appropriate headers ..');
+    console.log(
+      'This is a revisit! Coloring the appropriate headers: ' + progressItem
+    );
     var progressDict = JSON.parse(progressItem);
     if (!progressDict) {
       return;
