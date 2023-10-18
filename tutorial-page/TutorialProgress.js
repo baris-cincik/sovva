@@ -1,6 +1,8 @@
 let plushie = 'octopus';
 console.log('setting progress for ' + plushie);
 
+localStorage.setItem(plushie + '-progress', null);
+
 //global progress dictionary. Will be filled with process
 var ProgressDictionary;
 
