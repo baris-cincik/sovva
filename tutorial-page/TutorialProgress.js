@@ -2,7 +2,7 @@ const IS_DEBUG = true;
 let plushie = 'octopus';
 log('setting progress for ' + plushie);
 
-localStorage.removeItem(plushie + '-progress');
+//localStorage.removeItem(plushie + '-progress');
 
 //global progress dictionary. Will be filled with process
 var ProgressDictionary;
@@ -57,24 +57,14 @@ function AddColorEvent() {
   });
 }
 
+//fills dictionary and colors the existing progress
 function FillProgressDictionary() {
   var progressItem = localStorage.getItem(plushie + '-progress');
   //progress exists
   if (progressItem) {
     log('This is a revisit! Coloring the appropriate headers: ' + progressItem);
     var progressDict = JSON.parse(progressItem);
-    if (!progressDict) {
-      return;
-    }
-
-    for (var key in progressDict) {
-      log('Deciding if we should color Key:', key, 'Value:', value);
-      // set progress for this key value pair
-      var value = progressDict[key];
-      if (value == true) {
-        colorHeader(key);
-      }
-    }
+    ColorHeadersUsingDictionary(progressDict);
   }
   //first time
   else {
@@ -86,10 +76,27 @@ function FillProgressDictionary() {
   }
 }
 
+function ColorHeadersUsingDictionary(progressDict) {
+  if (!progressDict) {
+    return;
+  }
+
+  for (var key in progressDict) {
+    log('Deciding if we should color Key:', key, 'Value:', value);
+    // set progress for this key value pair
+    var value = progressDict[key];
+    if (value == true) {
+      colorHeader(key);
+    }
+  }
+}
+
 //updates the given entry to true, then saves the new dict in local storage
 function UpdateProgressDictionary(id) {
   ProgressDictionary[id] = true;
-  //UPDATE LOCAL STORAGE
+  //update local storage
+  let dictionaryString = JSON.stringify(ProgressDictionary);
+  localStorage.setItem(plushie + '-progress', dictionaryString);
 }
 
 //colors the specified header to green
