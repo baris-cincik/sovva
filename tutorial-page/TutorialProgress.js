@@ -22,8 +22,8 @@ window.onload = function () {
 function AddColorEvent() {
   var accordionRow = document.querySelectorAll('#accordion-row');
 
-  accordionRow.forEach(function (element) {
-    var videoElement = element.querySelector('video');
+  accordionRow.forEach(function (row) {
+    var videoElement = row.querySelector('video');
     if (videoElement) {
       videoElement.addEventListener('play', function () {
         // Add your desired functionality here
@@ -40,7 +40,7 @@ function AddColorEvent() {
       });
     } else {
       //no video element. Add event to header button click
-      var accordionHeader = element.querySelector('#accordion-header');
+      var accordionHeader = row.querySelector('#accordion-header');
       if (accordionHeader) {
         accordionHeader.addEventListener('click', function () {
           log('An accordion without a video is clicked!');
