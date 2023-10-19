@@ -16,7 +16,7 @@ var ProgressDictionary;
 window.onload = function () {
   NameElements();
   //perform initial processing(will fill dictionary too)
-  FillProgressDictionary();
+  //FillProgressDictionary();
 
   if (ProgressDictionary) {
     //add coloring event to all accordions
