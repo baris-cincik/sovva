@@ -20,17 +20,16 @@ window.onload = function () {
 };
 
 function AddColorEvent() {
-  var accordionElements = document.querySelectorAll('#accordion-row');
+  var accordionRow = document.querySelectorAll('#accordion-row');
 
-  accordionElements.forEach(function (element) {
+  accordionRow.forEach(function (element) {
     var videoElement = element.querySelector('video');
     if (videoElement) {
       videoElement.addEventListener('play', function () {
         // Add your desired functionality here
         log('A video is played!');
-        let accordionElement = videoElement.closest('#accordion-element');
-        let accordionHeader =
-          accordionElement.querySelector('#accordion-header');
+        let accordionRow = videoElement.closest('#accordion-row');
+        let accordionHeader = accordionRow.querySelector('#accordion-header');
         if (accordionHeader) {
           log('Coloring the header 1');
           let span = accordionHeader.querySelector('span');
