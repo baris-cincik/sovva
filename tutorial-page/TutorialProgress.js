@@ -34,25 +34,19 @@ function AddColorEvent() {
     if (videoElement) {
       videoElement.addEventListener('timeupdate', function (event) {
         if (videoElement.currentTime >= 5) {
-          // User has watched 5 seconds of the video
-          // Perform your desired actions here
-          console.log('User has watched 5 seconds of the video');
+          log('User has watched 5 seconds of the video');
+          log('A video is played!');
+          let accordionRow = videoElement.closest('#accordion-row');
+          let accordionHeader = accordionRow.querySelector('#accordion-header');
+          if (accordionHeader) {
+            log('Coloring the header 1');
+            let span = accordionHeader.querySelector('span');
+            let id = span.innerText;
+            colorHeader(id);
+            UpdateProgressDictionary(id);
+          }
 
-          // You can also remove the event listener if needed
           videoElement.removeEventListener('timeupdate', arguments.callee);
-        }
-      });
-      videoElement.addEventListener('play', function () {
-        // Add your desired functionality here
-        log('A video is played!');
-        let accordionRow = videoElement.closest('#accordion-row');
-        let accordionHeader = accordionRow.querySelector('#accordion-header');
-        if (accordionHeader) {
-          log('Coloring the header 1');
-          let span = accordionHeader.querySelector('span');
-          let id = span.innerText;
-          colorHeader(id);
-          UpdateProgressDictionary(id);
         }
       });
     } else {
