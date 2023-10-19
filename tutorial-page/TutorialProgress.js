@@ -1,8 +1,15 @@
 const IS_DEBUG = true;
-let plushie = 'octopus';
 log('setting progress for ' + plushie);
-
+let plushie = 'DEFAULT';
 //localStorage.removeItem(plushie + '-progress');
+
+var progressScript = document.getElementById('ProgressScript');
+if (progressScript) {
+  plushie = progressScript.getAttribute('plushie');
+  log('setting progress for ' + plushie);
+} else {
+  log('ProgressScript element not found.');
+}
 
 //global progress dictionary. Will be filled with process
 var ProgressDictionary;
