@@ -1,4 +1,4 @@
-const IS_DEBUG = true;
+const IS_DEBUG = false;
 let plushie = 'DEFAULT';
 //localStorage.removeItem(plushie + '-progress');
 
