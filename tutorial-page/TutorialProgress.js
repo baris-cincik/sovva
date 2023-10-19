@@ -127,6 +127,7 @@ function colorHeader(innerText) {
         'green',
         'important'
       );
+      accordionHeader.style.setProperty('color', 'white', 'important');
     }
   }
 }
@@ -191,7 +192,8 @@ function ResetProgress() {
   var dictionaryString = JSON.stringify(beginnerDict);
   localStorage.setItem(plushie + '-progress', dictionaryString);
   ProgressDictionary = beginnerDict;
-  FillProgressDictionary();
+  location.reload();
+  //FillProgressDictionary();
 }
 
 function AddResetEvent() {
