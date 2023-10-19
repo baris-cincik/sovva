@@ -21,6 +21,7 @@ window.onload = function () {
   if (ProgressDictionary) {
     //add coloring event to all accordions
     AddColorEvent();
+    AddResetEvent();
   } else {
     log('Failed to fetch tutorial progress');
   }
@@ -183,6 +184,25 @@ function NameElements() {
       // Accordion tab not found
     }
   });
+}
+
+function ResetProgress() {
+  let beginnerDict = getBeginnerDictionary();
+  var dictionaryString = JSON.stringify(beginnerDict);
+  localStorage.setItem(plushie + '-progress', dictionaryString);
+  ProgressDictionary = beginnerDict;
+  FillProgressDictionary();
+}
+
+function AddResetEvent() {
+  var resetButton = document.getElementById('ResetProgress');
+
+  if (resetButton) {
+    resetButton.addEventListener('click', function (event) {
+      log('Reset button clicked');
+      ResetProgress();
+    });
+  }
 }
 
 function log(toPrint) {
