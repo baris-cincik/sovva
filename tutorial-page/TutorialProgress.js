@@ -1,7 +1,7 @@
-const IS_DEBUG = true;
+const IS_DEBUG = false;
 let plushie = 'DEFAULT';
 //localStorage.removeItem(plushie + '-progress');
-
+console.log('Progress script active..');
 var progressScript = document.getElementById('ProgressScript');
 if (progressScript) {
   plushie = progressScript.getAttribute('plushie');
