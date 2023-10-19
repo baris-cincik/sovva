@@ -30,6 +30,14 @@ function AddColorEvent() {
         log('A video is played!');
         //call colorHeader with the innerText
         //update global dictionary
+        let accordionElement = videoElement.closest('#accordion-element');
+        let accordionHeader =
+          accordionElement.querySelector('#accordion-header');
+        if (accordionHeader) {
+          log('Coloring the header 1');
+          let span = accordionHeader.querySelector('span');
+          colorHeader(span.innerText);
+        }
       });
     } else {
       //no video element. Add event to header button click
