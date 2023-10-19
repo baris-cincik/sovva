@@ -113,7 +113,7 @@ function getBeginnerDictionary() {
 }
 
 function log(toPrint) {
-  if (true) {
-    log(toPrint);
+  if (IS_DEBUG) {
+    console.log(toPrint);
   }
 }
