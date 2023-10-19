@@ -93,6 +93,7 @@ function UpdateProgressDictionary(id) {
 
 //colors the specified header to green
 function colorHeader(innerText) {
+  log('Colouring header with id: ' + innerText);
   var spanElement = document.querySelector('span');
   if (spanElement && spanElement.innerText === innerText) {
     log('Span found. Coloring now ..');
