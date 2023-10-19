@@ -1,5 +1,4 @@
 const IS_DEBUG = true;
-log('setting progress for ' + plushie);
 let plushie = 'DEFAULT';
 //localStorage.removeItem(plushie + '-progress');
 
