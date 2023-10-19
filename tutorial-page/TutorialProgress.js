@@ -28,8 +28,6 @@ function AddColorEvent() {
       videoElement.addEventListener('play', function () {
         // Add your desired functionality here
         log('A video is played!');
-        //call colorHeader with the innerText
-        //update global dictionary
         let accordionElement = videoElement.closest('#accordion-element');
         let accordionHeader =
           accordionElement.querySelector('#accordion-header');
@@ -43,12 +41,16 @@ function AddColorEvent() {
       });
     } else {
       //no video element. Add event to header button click
-      var buttonElement = element.querySelector('#accordion-header');
-      if (buttonElement) {
-        buttonElement.addEventListener('click', function () {
+      var accordionHeader = element.querySelector('#accordion-header');
+      if (accordionHeader) {
+        accordionHeader.addEventListener('click', function () {
           log('An accordion without a video is clicked!');
           //call colorHeader with the innerText
           //update global dictionary
+          let span = accordionHeader.querySelector('span');
+          let id = span.innerText;
+          colorHeader(id);
+          UpdateProgressDictionary(id);
         });
       }
     }
