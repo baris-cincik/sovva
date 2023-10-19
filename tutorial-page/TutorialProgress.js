@@ -14,7 +14,7 @@ if (progressScript) {
 var ProgressDictionary;
 
 window.onload = function () {
-  NameElements();
+  //NameElements();
   //perform initial processing(will fill dictionary too)
   //FillProgressDictionary();
 
