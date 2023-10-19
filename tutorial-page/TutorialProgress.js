@@ -59,12 +59,15 @@ function AddColorEvent() {
 
 //fills dictionary and colors the existing progress
 function FillProgressDictionary() {
-  var progressItem = localStorage.getItem(plushie + '-progress');
+  var progressString = localStorage.getItem(plushie + '-progress');
   //progress exists
-  if (progressItem) {
-    log('This is a revisit! Coloring the appropriate headers: ' + progressItem);
-    var progressDict = JSON.parse(progressItem);
+  if (progressString) {
+    log(
+      'This is a revisit! Coloring the appropriate headers: ' + progressString
+    );
+    var progressDict = JSON.parse(progressString);
     ColorHeadersUsingDictionary(progressDict);
+    ProgressDictionary = progressDict;
   }
   //first time
   else {
@@ -82,7 +85,6 @@ function ColorHeadersUsingDictionary(progressDict) {
   }
 
   for (var key in progressDict) {
-    log('Deciding if we should color Key:', key, 'Value:', value);
     // set progress for this key value pair
     var value = progressDict[key];
     if (value == true) {
@@ -170,17 +172,6 @@ function NameElements() {
     } else {
       // Accordion tab not found
     }
-  });
-}
-
-function addIdToChildSpans() {
-  var accordionHeaders = document.querySelectorAll('#accordion-header');
-
-  accordionHeaders.forEach(function (accordionHeader) {
-    var spanElements = accordionHeader.querySelectorAll('span');
-    spanElements.forEach(function (spanElement) {
-      spanElement.id = spanElement.innerText;
-    });
   });
 }
 
