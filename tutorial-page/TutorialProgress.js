@@ -20,9 +20,9 @@ window.onload = function () {
 };
 
 function AddColorEvent() {
-  var accordionRow = document.querySelectorAll('#accordion-row');
-
-  accordionRow.forEach(function (row) {
+  var accordionRows = document.querySelectorAll('#accordion-row');
+  log('Found ' + accordionRows.length + ' accordion rows');
+  accordionRows.forEach(function (row) {
     var videoElement = row.querySelector('video');
     if (videoElement) {
       videoElement.addEventListener('play', function () {
