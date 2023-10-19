@@ -8,6 +8,7 @@ localStorage.removeItem(plushie + '-progress');
 var ProgressDictionary;
 
 window.onload = function () {
+  NameElements();
   //perform initial processing(will fill dictionary too)
   FillProgressDictionary();
 
@@ -94,8 +95,8 @@ function UpdateProgressDictionary(id) {
 //colors the specified header to green
 function colorHeader(innerText) {
   log('Colouring header with id: ' + innerText);
-  var spanElement = document.querySelector('span');
-  if (spanElement && spanElement.innerText === innerText) {
+  var spanElement = document.getElementById(innerText);
+  if (spanElement) {
     log('Span found. Coloring now ..');
     var accordionHeader = spanElement.closest('#accordion-header');
 
@@ -128,6 +129,52 @@ function getBeginnerDictionary() {
   } else {
     log('The beginner dictionary FAILED to initialized.');
   }
+}
+
+function NameElements() {
+  var accordionComponents = document.querySelectorAll('#accordion-component');
+
+  accordionComponents.forEach(function (accordionComponent) {
+    var accordionTab = accordionComponent.querySelector(
+      '[data-pf-type="Accordion"]'
+    );
+
+    if (accordionTab) {
+      var accordionRows = accordionTab.querySelectorAll(
+        '[data-pf-type="Accordion"]'
+      );
+
+      accordionRows.forEach(function (accordionRow) {
+        accordionRow.id = 'accordion-row';
+
+        var accordionHeader = accordionRow.querySelector(
+          '[data-pf-type="Accordion.Header"]'
+        );
+
+        if (accordionHeader) {
+          accordionHeader.id = 'accordion-header';
+
+          var accordionSpan = accordionHeader.querySelector('span');
+          if (accordionSpan) {
+            accordionSpan.id = accordionSpan.innerText;
+          }
+        }
+      });
+    } else {
+      // Accordion tab not found
+    }
+  });
+}
+
+function addIdToChildSpans() {
+  var accordionHeaders = document.querySelectorAll('#accordion-header');
+
+  accordionHeaders.forEach(function (accordionHeader) {
+    var spanElements = accordionHeader.querySelectorAll('span');
+    spanElements.forEach(function (spanElement) {
+      spanElement.id = spanElement.innerText;
+    });
+  });
 }
 
 function log(toPrint) {
