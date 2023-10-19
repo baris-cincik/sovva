@@ -36,7 +36,9 @@ function AddColorEvent() {
         if (accordionHeader) {
           log('Coloring the header 1');
           let span = accordionHeader.querySelector('span');
-          colorHeader(span.innerText);
+          let id = span.innerText;
+          colorHeader(id);
+          UpdateProgressDictionary(id);
         }
       });
     } else {
@@ -80,6 +82,12 @@ function FillProgressDictionary() {
     localStorage.setItem(plushie + '-progress', dictionaryString);
     ProgressDictionary = beginnerDict;
   }
+}
+
+//updates the given entry to true, then saves the new dict in local storage
+function UpdateProgressDictionary(id) {
+  ProgressDictionary[id] = true;
+  //UPDATE LOCAL STORAGE
 }
 
 //colors the specified header to green
