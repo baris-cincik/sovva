@@ -32,6 +32,16 @@ function AddColorEvent() {
   accordionRows.forEach(function (row) {
     var videoElement = row.querySelector('video');
     if (videoElement) {
+      videoElement.addEventListener('timeupdate', function (event) {
+        if (video.currentTime >= 5) {
+          // User has watched 5 seconds of the video
+          // Perform your desired actions here
+          console.log('User has watched 5 seconds of the video');
+
+          // You can also remove the event listener if needed
+          video.removeEventListener('timeupdate', arguments.callee);
+        }
+      });
       videoElement.addEventListener('play', function () {
         // Add your desired functionality here
         log('A video is played!');
