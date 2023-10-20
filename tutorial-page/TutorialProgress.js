@@ -2,18 +2,13 @@ const IS_DEBUG = false;
 let plushie = 'DEFAULT';
 //localStorage.removeItem(plushie + '-progress');
 console.log('Progress script active..');
-var progressScript = document.getElementById('ProgressScript');
-if (progressScript) {
-  plushie = progressScript.getAttribute('plushie');
-  console.log('setting progress for ' + plushie);
-} else {
-  log('ProgressScript element not found.');
-}
 
 //global progress dictionary. Will be filled with process
 var ProgressDictionary;
 
 window.onload = function () {
+  plushie = ExtractPlushieName();
+  console.log('setting progress for ' + plushie);
   NameElements();
   //perform initial processing(will fill dictionary too)
   FillProgressDictionary();
@@ -204,6 +199,25 @@ function AddResetEvent() {
       log('Reset button clicked');
       ResetProgress();
     });
+  }
+}
+
+function ExtractPlushieName() {
+  var element = document.getElementById('ProgressScript');
+  if (element) {
+    var classes = element.classList;
+
+    for (var i = 0; i < classes.length; i++) {
+      var currentClass = classes[i];
+
+      if (currentClass.includes('plushie')) {
+        var value = currentClass.split('-')[1];
+        log('Value extracted from class:', value);
+        return value;
+      }
+    }
+  } else {
+    console.log('Plushie not found.');
   }
 }
 
