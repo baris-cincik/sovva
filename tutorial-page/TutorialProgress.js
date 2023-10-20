@@ -5,7 +5,7 @@ console.log('Progress script active..');
 var progressScript = document.getElementById('ProgressScript');
 if (progressScript) {
   plushie = progressScript.getAttribute('plushie');
-  log('setting progress for ' + plushie);
+  console.log('setting progress for ' + plushie);
 } else {
   log('ProgressScript element not found.');
 }
