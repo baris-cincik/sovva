@@ -2,7 +2,7 @@ const IS_DEBUG = false;
 let plushie = 'DEFAULT';
 //localStorage.removeItem(plushie + '-progress');
 console.log('Progress script active..');
-
+sessionStorage.clear();
 //global progress dictionary. Will be filled with process
 var ProgressDictionary;
 
